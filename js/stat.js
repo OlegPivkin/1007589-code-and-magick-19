@@ -37,7 +37,7 @@ var getPlayerColor = function (playerName) {
   return 'hsl(240, ' + Math.floor(Math.random() * 100) + '%, ' + '77%)';
 };
 
-// Рисую облако и тени
+// Рисую облако и тень
 var renderCTX = function (ctx, color, x, y) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
