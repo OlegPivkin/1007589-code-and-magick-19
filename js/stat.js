@@ -35,7 +35,7 @@ var getPlayerColor = function (playerName) {
   if (playerName === CURRENT_PLAYER_NAME) {
     return CURRENT_PLAYER_BAR_COLOR;
   }
-  return 'hsl(240, ' + Math.floor(Math.random() * 100) + '%, ' + '50%)';
+  return 'hsl(240, ' + Math.floor(Math.random() * 101) + '%, ' + '50%)';
 };
 
 // Отрисовка облака/тени
