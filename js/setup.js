@@ -1,21 +1,20 @@
 'use strict';
 
-var randomElement = function (array) {
-  var rand = Math.floor(Math.random() * array.length);
-  return array[rand];
-};
-
-document.querySelector('.setup').classList.remove('hidden');
-
-var similarListElement = document.querySelector('.setup-similar-list');
-var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-
 var WIZARD_FIRST_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var WIZARD_LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+var WIZARD_NUMBER = 4;
 
-var createWizardsArray = function (wizardsNumber) {
+var randomElement = function (element) {
+  var rand = Math.floor(Math.random() * element.length);
+  return element[rand];
+};
+
+var similarListElement = document.querySelector('.setup-similar-list');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+
+var createWizards = function (wizardsNumber) {
   var wizards = [];
   for (var i = 0; i < wizardsNumber; i++) {
     var wizard = {
@@ -38,19 +37,17 @@ var createWizardElement = function (wizard) {
   return wizardElement;
 };
 
-var createList = function (array) {
+var createList = function (list) {
   var fragment = document.createDocumentFragment();
-  for (var i = 0; i < array.length; i++) {
-    fragment.appendChild(createWizardElement(array[i]));
+  for (var i = 0; i < list.length; i++) {
+    fragment.appendChild(createWizardElement(list[i]));
   }
+  similarListElement.appendChild(fragment);
   return fragment;
 };
 
-var renderWizards = function (wizards) {
-  similarListElement.appendChild(createList(wizards));
-};
-
-var wizards = createWizardsArray(4);
-renderWizards(wizards);
+var wizards = createWizards(WIZARD_NUMBER);
+createList(wizards);
 
 document.querySelector('.setup-similar').classList.remove('hidden');
+document.querySelector('.setup').classList.remove('hidden');
